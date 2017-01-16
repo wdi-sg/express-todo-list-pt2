@@ -5,6 +5,7 @@ This is Part 4 of a series of labs working towards building your first full stac
 - [Part 1 - TDD todo list](https://github.com/wdi-sg/tdd-todo-list)
 - [Part 2 - Mongo todo list](https://github.com/wdi-sg/mongo-todo-list)
 - [Part 3 - Express todo list pt1](https://github.com/wdi-sg/express-todo-list-pt1)
+- (optional) [Part 3.1 - Mocha, Chai and Supertest todo list](https://github.com/wdi-sg/mocha-todo-list)
 - Part 4 - (this one)
 
 So far you've built a TODO list Express JSON API and that's awesome! Now we're going to take it in another direction and instead of returning JSON data, you're going to render views using EJS.
