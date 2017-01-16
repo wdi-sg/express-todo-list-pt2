@@ -1,0 +1,14 @@
+<div class="container">
+  <h1 class="page-header">Things to do</h1>
+
+<ul class="list-group">
+  <% todos.forEach(function (todoItem) { %>
+    <li class="list-group-item">
+      <strong><%= todoItem.title %>: </strong>
+      <%= todoItem.description %>
+      <a class="btn btn-default" href=<%= "/todo/" + todoItem._id %>>View</a>
+    </li>
+  <% }) %>
+</ul>
+
+</div>
