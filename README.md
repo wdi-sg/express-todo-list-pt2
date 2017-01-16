@@ -19,7 +19,7 @@ You'll need to the following routes and functionality:
 - `/todos/new` Should render an EJS page with a form that submits a POST requests to create the todos (renders: views/todos/new.ejs)
 - `POST /todos` Should create a new Todo with the submitted form data then res.redirect to the show page (/todos/:id) for the newly created todo.
 - `/todos/:id` Should render an EJS page that display the full details for the specified TODO (id equal to the req.params.id).
-- `/todos/edit/:id` Should render an EJS page with a form that when submitted sends a PUT requests to update the specific TODO (renders: views/todos/edit.ejs)
+- `/todos/:id/edit` Should render an EJS page with a form that when submitted sends a PUT requests to update the specific TODO (renders: views/todos/edit.ejs)
 - `PUT /todos/:id` Should update the specified TODO with the submitted form data then res.redirect to the show page (/todos/:id) for the newly created todo
 - `DELETE /todos/:id` Should delete the specified TODO then res.redirect to the index page (/todos)
 
