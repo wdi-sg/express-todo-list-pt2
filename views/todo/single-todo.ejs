@@ -3,10 +3,16 @@
 
     <ul class="list-group">
       <li class="list-group-item">
-        <strong><%= todoItem.title %>: </strong>
-        <%= todoItem.description %>
+        <strong><%= todoItem.title %>: </strong><br>
+        <%= todoItem.description %><br>
+        Completed: <%= todoItem.completed %><br>
+
         <a class="btn btn-warning" href=<%= "/todo/" + todoItem._id + "/edit" %>>Edit</a>
-        <a class="btn btn-danger" href=<%= "/todo/" + todoItem._id %>>Delete</a>
+
+        <form method="POST" action=<%= "/todo/" + todoItem._id + "?_method=DELETE" %>>
+          <button type="submit" class="btn btn-danger">Delete</button>
+        </form>
+
       </li>
     </ul>
 

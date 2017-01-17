@@ -5,10 +5,13 @@ const ejsLayouts = require('express-ejs-layouts')
 const mongoose = require('mongoose')
 const todo = require('./routes/todo_router')
 const bodyParser = require('body-parser')
+const methodOverride = require('method-override')
 
 mongoose.connect('mongodb://localhost/myapp')
 
 mongoose.Promise = global.Promise
+
+app.use(methodOverride('_method'))
 
 app.use(bodyParser.urlencoded({ extended: false }))
 
@@ -19,5 +22,9 @@ app.set('view engine', 'ejs')
 app.use(express.static(path.join(__dirname, 'views')))
 
 app.use('/todo', todo)
+
+app.use('/', (req, res) => {
+  res.send('Vell, vell, vell. Vellcome to my app.')
+})
 
 app.listen(3000)

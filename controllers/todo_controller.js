@@ -38,8 +38,24 @@ let todosController = {
     })
   },
 
-  delete: () => {
+  update: (req, res) => {
+    Todo.findOneAndUpdate({
+      id: req.params._id
+    }, {
+      title: req.body.title,
+      description: req.body.description,
+      completed: req.body.completed
+    }, (err, todoItem) => {
+      if (err) throw err
+      res.redirect('/todo/' + todoItem.id)
+    })
+  },
 
+  delete: (req, res) => {
+    Todo.findByIdAndRemove(req.params.id, (err, todoItem) => {
+      if (err) throw err
+      res.redirect('/todo')
+    })
   }
 
 }

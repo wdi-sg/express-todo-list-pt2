@@ -11,15 +11,9 @@ router.post('/', todoController.create)
 router.get('/:id', todoController.listOne)
 
 router.get('/:id/edit', todoController.edit)
-//
-// router.post('/todos', todoController.newChatToUser)
-//
-// router.get('/todos/:id', todoController.postNewChat)
-//
-// router.get('/todos/:id/edit', todoController.postNewChat)
-//
-// router.put('/todos/:id', todoController.postChatToUser)
 
-// router.delete('/todos/:id', todoController.postChatToUser))
+router.put('/:id', todoController.update)
+
+router.delete('/:id', todoController.delete)
 
 module.exports = router
