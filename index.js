@@ -11,6 +11,8 @@ mongoose.connect('mongodb://localhost/myapp')
 
 mongoose.Promise = global.Promise
 
+app.use(express.static(path.join(__dirname, 'public')))
+
 app.use(methodOverride('_method'))
 
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -18,8 +20,6 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(ejsLayouts)
 
 app.set('view engine', 'ejs')
-
-app.use(express.static(path.join(__dirname, 'views')))
 
 app.use('/todo', todo)
 

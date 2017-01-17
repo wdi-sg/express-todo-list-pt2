@@ -6,11 +6,11 @@ router.get('/', todoController.list)
 
 router.get('/new', todoController.new)
 
-router.post('/', todoController.create)
-
 router.get('/:id', todoController.listOne)
 
 router.get('/:id/edit', todoController.edit)
+
+router.post('/', todoController.create)
 
 router.put('/:id', todoController.update)
 

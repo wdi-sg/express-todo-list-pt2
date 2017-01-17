@@ -3,13 +3,19 @@
 
     <ul class="list-group">
       <li class="list-group-item">
-        <strong><%= todoItem.title %>: </strong><br>
-        <%= todoItem.description %><br>
-        Completed: <%= todoItem.completed %><br>
+        <h3><strong><%= todoItem.title %>: </strong></h3>
+        <h4><%= todoItem.description %></h4>
+        <h4>Completed:
+          <% if (todoItem.completed == true) { %>
+            <span class="label label-success">True</span>
+          <% } else if (todoItem.completed == false) { %>
+            <span class="label label-danger">False</span>
+          <% } %>
+        </h4>
 
         <a class="btn btn-warning" href=<%= "/todo/" + todoItem._id + "/edit" %>>Edit</a>
 
-        <form method="POST" action=<%= "/todo/" + todoItem._id + "?_method=DELETE" %>>
+        <form class="deleteForm "method="POST" action=<%= "/todo/" + todoItem._id + "?_method=DELETE" %>>
           <button type="submit" class="btn btn-danger">Delete</button>
         </form>
 
