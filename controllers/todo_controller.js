@@ -23,7 +23,7 @@ let todosController = {
     let newTodo = new Todo({
       title: req.body.title,
       description: req.body.description,
-      completed: true
+      completed: false
     })
     newTodo.save(function (err, savedEntry) {
       if (err) throw err

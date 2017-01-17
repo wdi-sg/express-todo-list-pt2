@@ -6,6 +6,12 @@
     <li class="list-group-item">
       <strong><%= todoItem.title %>: </strong>
       <%= todoItem.description %>
+      || Completed:
+      <% if (todoItem.completed == true) { %>
+        <span class="label label-success">True</span>
+      <% } else if (todoItem.completed == false) { %>
+        <span class="label label-danger">False</span>
+      <% } %>
       <a class="pull-right" href=<%= "/todo/" + todoItem._id %>>View</a>
     </li>
   <% }) %>
