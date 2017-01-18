@@ -1,6 +1,6 @@
 let Todo = require('../models/todo')
 
-let todosController = {
+const todosController = {
   list: (req, res) => {
     Todo.find({}, (err, todos) => {
       if (err) throw err
