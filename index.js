@@ -8,6 +8,7 @@ const bodyParser = require('body-parser')
 const methodOverride = require('method-override')
 const session = require('express-session')
 const passport = require('./config/ppConfig')
+const flash = require('connect-flash')
 
 mongoose.connect('mongodb://localhost/myapp')
 
@@ -28,16 +29,25 @@ app.use(methodOverride('_method'))
 
 app.use(bodyParser.urlencoded({ extended: false }))
 
+app.use(flash())
+
 app.use(ejsLayouts)
+
+app.use(require('./middleware/setCurrentUser'))
 
 app.set('view engine', 'ejs')
 
 app.use('/todo', require('./routes/todo_router'))
-
 app.use('/auth', require('./routes/user_router'))
 
-app.use('/', (req, res) => {
-  res.redirect('/todo')
+app.get('/', (req, res) => {
+  res.render('home')
+})
+
+app.use(require('./middleware/isLoggedIn'))
+
+app.get('/profile', (req, res) => {
+  res.render('user/profile')
 })
 
 app.listen(3000)

@@ -21,10 +21,17 @@ passport.use(new LocalStrategy({
   }, function (err, user) {
     if (err) return done(err)
 
-    if (!user) return done(null, false)
+    if (!user) {
+      console.log('No user found')
+      return done(null, false)
+    }
 
-    if (!user.validPassword(password)) return done(null, false)
+    if (!user.validPassword(password)) {
+      console.log('Invalid password')
+      return done(null, false)
+    }
 
+    console.log('logged in!')
     return done(null, user)
   })
 }))

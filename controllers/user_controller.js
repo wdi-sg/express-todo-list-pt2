@@ -1,5 +1,4 @@
 const User = require('../models/user')
-const passport = require('../config/ppConfig')
 
 const userController = {
   signupPage: function (req, res) {
@@ -11,28 +10,34 @@ const userController = {
   },
 
   signup: function (req, res) {
-    User.find({ email: req.body.email }, (err, foundUser) => {
+    User.find({
+      email: req.body.email
+    }, (err, foundUser) => {
       if (err) throw err
-      if (foundUser) res.redirect('/auth/login')
-    })
-    User.create({
-      username: req.body.username,
-      email: req.body.email,
-      password: req.body.password
-    }, (err, createdUser) => {
-      if (err) {
-        console.log('Signup error: ' + err)
-        res.redirect('/auth/signup')
+      if (foundUser) {
+        res.redirect('/auth/login')
+        return
       }
-      res.redirect('/')
+
+      User.create({
+        username: req.body.username,
+        email: req.body.email,
+        password: req.body.password
+      }, (err, createdUser) => {
+        if (err) {
+          console.log('Signup error: ' + err)
+          res.redirect('/auth/signup')
+          return
+        }
+        res.redirect('/')
+      })
     })
   },
 
-  login: function (req, res) {
-    passport.authenticate('local', {
-      successRedirect: '/',
-      failureRedirect: '/auth/login'
-    })
+  logout: function (req, res) {
+    req.logout()
+    console.log('logged out')
+    res.redirect('/')
   }
 
   // profile: function (req, res) {
@@ -41,12 +46,12 @@ const userController = {
   //   })
   // }
 
-  // route middleware to make sure user is logged in
-  // function isLoggedIn (req, res, next) {
-  //   if (req.isAuthenticated()) return next()
-  //   res.redirect('/')
-  // }
-
 }
+
+// route middleware to make sure user is logged in
+// function isLoggedIn (req, res, next) {
+//   if (req.isAuthenticated()) return next()
+//   res.redirect('/')
+// }
 
 module.exports = userController

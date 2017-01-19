@@ -24,8 +24,6 @@ const UserSchema = new mongoose.Schema({
   }
 })
 
-module.exports = mongoose.model('User', UserSchema)
-
 UserSchema.pre('save', function (next) {
   var user = this
 
@@ -50,3 +48,5 @@ UserSchema.options.toJSON = {
     return ret
   }
 }
+
+module.exports = mongoose.model('User', UserSchema)
