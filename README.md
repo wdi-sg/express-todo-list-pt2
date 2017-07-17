@@ -10,7 +10,7 @@ This is Part 4 of a series of labs working towards building your first full stac
 - [Part 5 - Multi Model todo list](https://github.com/wdi-sg/multi-model-todo-list)
 - [Part 6 - Users todo list](https://github.com/wdi-sg/users-todo-list)
 
-So far you've built a TODO list Express JSON API and that's awesome! Now we're going to take it in another direction and instead of returning JSON data, you're going to render views using EJS.
+So far you've built a TODO list Express JSON API and that's awesome! Now we're going to take it in another direction and instead of returning JSON data, you're going to render views using `handlebars`.
 
 Don't forget that you'll need to use [Method Override](https://www.npmjs.com/package/method-override) for you update and delete forms.
 
